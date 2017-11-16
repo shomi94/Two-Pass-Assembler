@@ -1,0 +1,23 @@
+.data
+start_data:
+x DEF 20
+y DEF 10
+DD x - y
+l1: c DEF 5
+end_data:
+
+ORG 0x30
+.text
+LOAD R8, #10
+ADD R7, R8, R9
+PUSH R2
+JMP start_data
+POP R3
+
+.text.1
+LOAD R5, (end_data - start_data)
+
+.bss
+l2: DW 2 DUP ?
+
+.end

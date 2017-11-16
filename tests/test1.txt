@@ -1,0 +1,31 @@
+.data
+.global lab1, lab2
+.global lab_ext	; uvoz labele
+jedan: DD 1
+lab1:
+	DD (10 - 3) - 4 DUP lab1 + 5
+	DW 2
+	DD lab_ext
+num DEF 5
+letter DEF 'a'
+p1: DD num DUP 0x45
+ORG 0x100
+.text
+start_text:
+JZ R10,p1 + num
+JNZ R0, 10 / 2 * num
+p2: LOAD R6,[R4 + (p2 - start_text) + 2]
+STORE R9,[R10 + num - 2]
+LOADUB R1,#15
+LOADSB R6,0x8
+LOADUW R14,[R3]
+LOADSW R12,[R2 + 7]
+LOAD R1,R2
+STOREB R5,[R15 + 1]
+lab3: STOREW R15,0b1111
+.global lab3	; izvoz simbola
+p3: JZ R1,0x5
+end_text:
+.data.1
+lab2: DW 2 DUP (end_text - start_text) + lab3
+.end

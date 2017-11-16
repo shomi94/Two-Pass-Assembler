@@ -1,0 +1,12 @@
+.data
+labela:
+DB 5
+DW 10
+DD 15
+.text
+LOAD R0, #10
+LOAD R0, R1
+LOAD R0, [R1]
+LOAD R0, [R5 + 0x10]
+LOAD R0, $labela
+.end
